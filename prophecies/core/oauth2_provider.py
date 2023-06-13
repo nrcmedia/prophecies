@@ -12,7 +12,8 @@ class OAuth2Provider(BaseOAuth2):
     AUTHORIZATION_URL = settings.SOCIAL_AUTH_PROVIDER_AUTHORIZATION_URL
     ACCESS_TOKEN_URL = settings.SOCIAL_AUTH_PROVIDER_ACCESS_TOKEN_URL
     ACCESS_TOKEN_METHOD = settings.SOCIAL_AUTH_PROVIDER_ACCESS_TOKEN_METHOD
-    SCOPE_SEPARATOR = ','
+    SCOPE_SEPARATOR = ' '
+    ID_KEY = 'sub'
 
     def auth_html(self):
         pass
@@ -33,7 +34,7 @@ class OAuth2Provider(BaseOAuth2):
             'email': response.get('email') or '',
             'first_name': first_name,
             'last_name': last_name,
-            'provider_groups': get_path(response, settings.SOCIAL_AUTH_PROVIDER_GROUPS_FIELD, []),
+            'provider_groups': ['staff'],
         }
 
 
